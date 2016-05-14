@@ -1,0 +1,254 @@
+body {
+  color: #05e7f6;
+  background-color: #000000;
+}
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 25px #FF1177, 0 0 50px #fffa00;
+  }
+}
+
+.jumbotron {
+  /*background: linear-gradient(to right, #bd1515, #ffd800);*/
+  background-image: url("./BlueLightning-min.jpg");
+  background-size: 100% 100%;
+  /*
+  height: 200px;
+  width: 400px;
+  border: 1px solid black
+  */
+  border-bottom: 5px solid #05e7f6;
+  margin-bottom: 0px;
+}
+
+  .jumbotron h1 {
+    padding-left: 5%;
+    color: #e5ed29;
+    text-shadow: 0 0 13px #05e7f6;
+    animation: neon1 1.5s ease-in-out infinite alternate;
+  }
+
+  .jumbotron h3 {
+    padding-left: 20%;
+    font-family: 'Yanone Kaffeesatz';
+    color: #C0C0C0;
+  }
+
+  .jumbotron h5 {
+    float: right;
+    padding-right: 50px;
+    font-family: 'Yanone Kaffeesatz';
+  }
+
+.status {
+  float: right;
+  padding-right: 10%;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+  .status .ready {
+    text-shadow: 0 0 5px greenyellow, 0 0 15px #679027, 0 0 25px greenyellow, 0 0 50px #fffa00;
+  }
+
+  .status .pending {
+    color: #fff203;
+    animation: neon1 0.5s ease-in-out infinite alternate;
+  }
+
+  .status .notready {
+    text-shadow: 0 0 5px #FF1177, 0 0 15px #fff, 0 0 25px #e5ad14, 0 0 50px #FF1177;
+  }
+
+
+.btn.active {
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+  .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+
+input[type=text].btn-file {
+  cursor: text;
+  text-align: left;
+}
+
+.main {
+}
+
+  .main .btn-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+.active {
+  /* background-color: green;*/
+}
+
+.charts {
+  color: white;
+  background-color: #000000;
+  padding: 0;
+  margin: 0;
+  width: 400px;
+  height: 200px;
+  margin-top: 10px;
+}
+
+#chartRPM .c3-line-y {
+  stroke: #f700db !important;
+  stroke-width: 4;
+}
+
+#chartRPM .c3-grid line {
+  stroke: rgba(197, 248, 255, 0.52);
+}
+
+#chartRPM .c3-axis {
+  stroke: #efd6ed;
+}
+
+#chartRPM .c3-axis-y-label {
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 20px;
+}
+
+.liveValue {
+  float: right;
+  font-size: 40px;
+}
+
+.log {
+  color: greenyellow;
+  font-family: 'Miriam Fixed';
+  background-color: #1A114D;
+  border-left: 2px solid #05e7f6;
+  border-bottom: 2px solid #05e7f6;
+}
+
+.log-header {
+  padding: 10px;
+  width: 95%;
+}
+
+.log-data {
+  color: greenyellow;
+  line-height: 1.0;
+  height: 50%;
+  overflow-y: scroll;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+  .log-data p {
+    margin: 0;
+    line-height: 1.1;
+    white-space: pre-wrap;
+    padding-right: 20px;
+  }
+
+  .log-data div.logprop {
+    padding-left: 10px;
+  }
+
+.latest {
+  padding-left: 100px;
+  color: red;
+  font-size: 32px;
+}
+
+  .latest span {
+    padding-left: 25px;
+  }
+
+.c3-legend-item-ch1 text {
+  fill: white;
+}
+
+.c3-legend-item-ch2 text {
+  fill: white;
+}
+
+.c3-axis-x-label {
+  fill: white;
+}
+
+.c3-axis-x .tick {
+  fill: white;
+}
+
+.c3-axis-y-label {
+  fill: white;
+}
+
+.c3-axis-y .tick {
+  fill: white;
+}
+
+.c3-tooltip {
+  color: red;
+}
+
+#status {
+  cursor: pointer;
+}
+
+#info {
+  position: absolute;
+  right: 25%;
+  top: 5%;
+  color: white;
+  background-color: rgba(0,0,0,0.25);
+  border: 2px solid white;
+}
+
+  #info td {
+    padding: 5px;
+  }
+
+  .rawLogModal {
+    background-color: rgba(242, 238, 153, 0.38);
+  }
+
+  .rawLog {
+    background-color: rgba(0,0,0,0.25);
+    color: yellow;
+    font-family: 'Yanone Kaffeesatz';
+  }
+
+  .rawLogData {
+    color: #10f510;
+    background-color: black;
+    font-size: 20px;
+    font-family: 'Miriam Fixed';
+    white-space: pre-wrap;
+    padding: 20px;
+    min-height: 80%;
+    height: 80%;
+    overflow-y: scroll;
+    line-height: 1.0;
+  }

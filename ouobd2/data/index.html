@@ -1,0 +1,127 @@
+<html>
+<head>
+  <title>OUOBD2</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet" type="text/css">
+  <link href="./app.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+  <div class="jumbotron">
+    <h1>OUOBD2</h1>
+    <h3>...Naturally Wired Tuning...</h3>
+    <div class="status">
+      <span class="state notready">
+        Not Ready
+      </span>
+    </div>
+  </div>
+  <div class="row main">
+
+    <div class="col-md-8">
+      <div class="col-md-6 active">
+        <div class="btn-group btn-group-justified" role="group">
+          <div class="btn-group" role="group">
+            <button class="btn btn-success"><span class="glyphicon glyphicon-play"></span></button>
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span></button>
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-warning"><span class="glyphicon">10</span></button>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rawLogModal"><span class="glyphicon glyphicon-film"></span></button>
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-info"><span class="glyphicon glyphicon-glass"></span></button>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button id="vehicleActionsBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              &nbsp;<span class="caret">
+              </span>
+            </button>
+            <ul id="vehicleActions" class="dropdown-menu"></ul>
+          </div>
+          <input id="vehicle" type="text" class="form-control" placeholder="Vehicle">
+        </div>
+        <div>
+          <h2>Debug File Upload</h2>
+          <span class="btn btn-primary btn-file">
+            Select<input id="fileInputText" type="file" />
+          </span>
+          <input id="fileInputTextName" class="btn btn-file btn-primary" type="text" />
+          <button id="fileUploadText" class="btn btn-primary">Upload</button>
+          <div class="uploadStatus"></div>
+        </div>
+      </div>
+      <div class="col-md-6 active">
+        <div id="chartRPM" class="col-md-6 charts"></div>
+      </div>
+      <div id="liveRPM" class="liveValue">6704</div>
+    </div>
+    <div class="col-md-4 log">
+      <div class="log-header">
+        <div class="btn-group btn-group-justified" role="group">
+          <div class="btn-group" role="group">
+            <button id="logPause" class="btn btn-warning"><span class="glyphicon glyphicon-pause"></span></button>
+          </div>
+          <div class="btn-group" role="group">
+            <button id="logClear" class="btn btn-danger"><span class="glyphicon glyphicon-minus-sign"></span></button>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button id="logActionsBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              &nbsp;<span class="caret">
+              </span>
+            </button>
+            <ul id="logActions" class="dropdown-menu"></ul>
+          </div>
+          <input id="inputCmd" type="text" class="form-control" placeholder="Command">
+          <span id="clearCmd" class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
+      </div>
+      <div>
+        <div class="log-data"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Raw Log Modal -->
+  <div id="rawLogModal" class="modal fade rawLogModal" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg rawLog" role="document">
+      <div class="modal-content rawLog">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Raw Log</h4>
+        </div>
+        <div id="rawLogData" class="modal-body rawLogData">
+          ...None fetched yet...
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button id="rawLogRefresh" type="button" class="btn btn-primary">Refresh</button>
+            <button id="rawLogClipboard" type="button" class="btn btn-success" data-clipboard-target="#rawLogData">Copy</button>
+            <button id="rawLogClear" type="button" class="btn btn-danger">Clear</button>
+            <!--<button id="rawLogCopy" type="button" class="btn btn-success">Copy</button>-->
+          </div>
+          <div class="">Logging: <span id="rawLogEnabled">?</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="temp"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.3/dist/clipboard.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+
+</html>
